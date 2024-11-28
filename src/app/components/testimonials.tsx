@@ -1,6 +1,7 @@
-import React from "react";
+"use client"
+import React, { useEffect } from "react";
 
-const Testimonials = (props : any) => {
+const Testimonials = (props: any) => {
     return (
         <div id="testimonials">
             <div className="container">
@@ -10,7 +11,7 @@ const Testimonials = (props : any) => {
                 </div>
                 <div className="row">
                     {props.data
-                        ? props.data.map((d : any, i : number) => (
+                        ? props.data.map((d: any, i: number) => (
                             <div key={`${d.name}-${i}`} className="col-md-4">
                                 <div className="testimonial">
                                     <div className="testimonial-image">

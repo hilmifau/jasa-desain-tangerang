@@ -12,8 +12,14 @@ import Contact from "./components/contact";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { fetchDataTestimonials } from "./lib/data";
+import { db } from "@vercel/postgres";
+import { testimonials } from "./lib/placeholder-data";
 
-export default function Home() {
+export default async function Home() {
+
+  const dataTesti = await fetchDataTestimonials();
+  console.log("data testimonials", dataTesti.rows);
 
   return (
     <div className="App">
@@ -23,7 +29,7 @@ export default function Home() {
       <Services data={landingPageData.Services} />
       <Features data={landingPageData.Features} />
       <Gallery data={landingPageData.Gallery} />
-      <Testimonials data={landingPageData.Testimonials} />
+      <Testimonials data={landingPageData.Testimonials} dataTesti={dataTesti.rows} />
       <Contact data={landingPageData.Contact} />
       <div
         style={{
